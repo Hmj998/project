@@ -7,8 +7,20 @@ public class Details {
     private int cid;
     private String Content;
     private String source;
-    private Date  relesadate;
+    private Date relesadate;
     private int Status;
+
+    public Details() {
+
+    }
+
+    public Details(int cid, String content, String source, Date relesadate, int status) {
+        this.cid = cid;
+        Content = content;
+        this.source = source;
+        this.relesadate = relesadate;
+        Status = status;
+    }
 
     public int getId() {
         return id;
@@ -56,15 +68,5 @@ public class Details {
 
     public void setStatus(int status) {
         Status = status;
-    }
-
-    public Details(int cid, String content, String source, Date relesadate) {
-        this.cid = cid;
-        Content = content;
-        this.source = source;
-        this.relesadate = relesadate;
-    }
-
-    public Details() {
     }
 }
