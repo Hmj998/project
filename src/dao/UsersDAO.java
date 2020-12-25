@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.sql.Connection;
 
 public class UsersDAO {
+    /*添加用户*/
     public Users addUser(Users users)throws Exception{
         Connection connection =DBHelper.getConnection();
         String sql = "insernt into users  values(username,passwords ,phone,usertype,image )";
@@ -23,4 +24,17 @@ public class UsersDAO {
             DbUtils.closeQuietly(connection);
         }
     }
+    /*删除用户*/
+    public void delete(String id) throws Exception {
+        Connection conn = DBHelper.getConnection();
+        String sql = "delete from details where id = ?";
+        try {
+            new QueryRunner().update(conn, sql, id);
+        } finally {
+            DbUtils.closeQuietly(conn);
+        }
+    }
+    /*修改密码*/
+
+    
 }
