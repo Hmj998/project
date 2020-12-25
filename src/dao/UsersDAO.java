@@ -25,7 +25,7 @@ public class UsersDAO {
         }
     }
     /*删除用户*/
-    public void delete(String id) throws Exception {
+    public void delete(int id) throws Exception {
         Connection conn = DBHelper.getConnection();
         String sql = "delete from details where id = ?";
         try {
@@ -35,6 +35,14 @@ public class UsersDAO {
         }
     }
     /*修改密码*/
-
+    public void update(int id, String passwords) throws Exception {
+        Connection conn = DBHelper.getConnection();
+        String sql = "update user set passwords = ? where id = ?";
+        try {
+            new QueryRunner().update(conn, sql, passwords,id);
+        } finally {
+            DbUtils.closeQuietly(conn);
+        }
+    }
     
 }

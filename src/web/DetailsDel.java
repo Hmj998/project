@@ -1,5 +1,8 @@
 package web;
 
+import bean.Details;
+import dao.DetailsDAO;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +17,11 @@ public class DetailsDel extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+       int ids = Integer.parseInt(req.getParameter("id"));
+        try {
+            new DetailsDAO().delete(ids);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

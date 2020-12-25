@@ -25,7 +25,7 @@ public class ContentDAO {
         }
     }
     /* 点赞方法*/
-    public int like(String id) throws Exception {
+    public int like(int id) throws Exception {
         Connection conn = DBHelper.getConnection();
         String sql = "update content set likeit = likeit + 1 where id = ?";
         try {
@@ -58,7 +58,7 @@ public class ContentDAO {
         }
     }
     /*删除内容*/
-    public void delete(String id) throws Exception {
+    public void delete(int id) throws Exception {
         Connection conn = DBHelper.getConnection();
         String sql = "delete from content where id = ?";
         try {

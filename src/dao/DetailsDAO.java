@@ -15,12 +15,12 @@ import java.util.List;
 
 public class DetailsDAO {
     /*查询所有评论*/
-    public List<Content> getCommentsByPostId(int id) throws Exception {
+    public List<Details> getCommentsByPostId() throws Exception {
         Connection conn = DBHelper.getConnection();
-        String sql = "select id, content, author, created from comment where postid  = ? order by created desc";
+        String sql = "select id, content, author, created from comment  ";
         try {
             return new QueryRunner().query(
-                    conn, sql, new BeanListHandler<Content>(Content.class), id);
+                    conn, sql, new BeanListHandler<Details>(Details.class));
         } finally {
             DbUtils.closeQuietly(conn);
         }
@@ -46,7 +46,7 @@ public class DetailsDAO {
         }
     }
     /*删除评论*/
-    public void delete(String id) throws Exception {
+    public void delete(int id) throws Exception {
         Connection conn = DBHelper.getConnection();
         String sql = "delete from details where id = ?";
         try {
